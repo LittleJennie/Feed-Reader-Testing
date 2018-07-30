@@ -101,4 +101,22 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+     describe ('New Feed Selection', function() {
+
+       beforeEach(function(done) {
+         loadFeed(0, function(){
+           priorFeed = $('.entry-link').first().attr('href');
+           console.log(priorFeed);
+         })
+         loadFeed(1, function() {
+           laterFeed = $('.entry-link').first().attr('href');
+           console.log(laterFeed);
+           done();
+         })
+       });
+
+       it('is updated', function() {
+           expect(priorFeed).not.toBe(laterFeed);
+       });
+     });
 }());
