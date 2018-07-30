@@ -34,7 +34,7 @@ $(function() {
          it('urls are defined', function() {
            for (var i = 0; i < allFeeds.length; i++) {
              expect(allFeeds[i].url).toBeDefined();
-             expect(allFeeds.length).not.toBe(0);
+             expect(allFeeds[i].url.length).not.toBe(0);
            }
          });
 
@@ -46,7 +46,7 @@ $(function() {
          it('name is defined', function() {
            for (var i = 0; i < allFeeds.length; i++) {
              expect(allFeeds[i].name).toBeDefined();
-             expect(allFeeds.length).not.toBe(0);
+             expect(allFeeds[i].name.length).not.toBe(0);
            }
          });
     });
@@ -83,7 +83,18 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
+    describe ('Initial Entries', function() {
 
+      beforeEach(function(done) {
+        loadFeed(0, function() {
+          done();
+        });
+      });
+
+      it('are complete', function() {
+          expect($('.entry')).not.toBe(0);
+      });
+    });
     /* TODO: Write a new test suite named "New Feed Selection" */
 
         /* TODO: Write a test that ensures when a new feed is loaded
