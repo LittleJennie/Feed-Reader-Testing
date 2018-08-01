@@ -92,7 +92,7 @@ $(function() {
       });
 
       it('are complete', function() {
-          expect($('.entry')).not.toBe(0);
+          expect($('.feed .entry')).not.toBe(0);
       });
     });
     /* TODO: Write a new test suite named "New Feed Selection" */
@@ -105,11 +105,11 @@ $(function() {
 
        beforeEach(function(done) {
          loadFeed(0, function(){
-           priorFeed = $('.entry-link').first().attr('href');
+           priorFeed = $('.entry-link').html();
            console.log(priorFeed);
          })
          loadFeed(1, function() {
-           laterFeed = $('.entry-link').first().attr('href');
+           laterFeed = $('.entry-link').html();
            console.log(laterFeed);
            done();
          })
