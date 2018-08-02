@@ -92,7 +92,8 @@ $(function() {
       });
 
       it('are complete', function() {
-          expect($('.feed .entry')).not.toBe(0);
+        console.log($('.feed .entry'));
+        expect($('.feed .entry').length).toBeGreaterThan(0);
       });
     });
     /* TODO: Write a new test suite named "New Feed Selection" */
