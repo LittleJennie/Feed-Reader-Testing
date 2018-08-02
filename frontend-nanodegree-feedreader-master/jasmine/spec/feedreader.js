@@ -92,7 +92,6 @@ $(function() {
       });
 
       it('are complete', function() {
-        console.log($('.feed .entry'));
         expect($('.feed .entry').length).toBeGreaterThan(0);
       });
     });
@@ -103,21 +102,23 @@ $(function() {
          * Remember, loadFeed() is asynchronous.
          */
      describe ('New Feed Selection', function() {
+       let feedAfterFirstLoad;
+       let feedAfterSecondLoad;
 
        beforeEach(function(done) {
          loadFeed(0, function(){
-           priorFeed = $('.entry-link').html();
-           console.log(priorFeed);
-         })
-         loadFeed(1, function() {
-           laterFeed = $('.entry-link').html();
-           console.log(laterFeed);
-           done();
-         })
+           feedAfterFirstLoad = $('.entry-link').html();
+           console.log(feedAfterFirstLoad);
+           loadFeed(1, function() {
+             feedAfterSecondLoad = $('.entry-link').html();
+             console.log(feedAfterSecondLoad);
+             done();
+           });
+         });
        });
 
        it('is updated', function() {
-           expect(priorFeed).not.toBe(laterFeed);
+           expect(feedAfterFirstLoad).not.toBe(feedAfterSecondLoad);
        });
      });
 }());
