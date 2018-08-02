@@ -69,9 +69,9 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
           it('can toggle between click events', function() {
-            $('.menu-icon-link').trigger('click');
+            $('.menu-icon-link').click();
             expect($('body').hasClass('menu-hidden')).toBe(false);
-            $('.menu-icon-link').trigger('click');
+            $('.menu-icon-link').click();
             expect($('body').hasClass('menu-hidden')).toBe(true);
           });
       });
